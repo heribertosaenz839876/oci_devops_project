@@ -23,17 +23,9 @@ steps:
   - type: Command
     name: "Docker Login"
     command:  cd MtdrSpring;
-              oci os object get --bucket-name reacttodo-ysmiy --name deployment_config.tgz --file deployment_config.tgz;
+              oci os object get --bucket-name reacttodo-v9ybx --name deployment_config.tgz --file deployment_config.tgz;
               tar -xzvf deployment_config.tgz;
               source env.sh;
-  
-              echo "=== DEBUG DOCKER ===";
-              docker --version;
-              docker info || true;
-              nslookup mx-queretaro-1.ocir.io || true;
-              echo "Token bytes:"; wc -c at.cfg || true;
-              echo "====================";
-  
               cat at.cfg | docker login -u "ax9dxibqo6lr/a00839876@tec.mx" --password-stdin mx-queretaro-1.ocir.io
 
   - type: Command
